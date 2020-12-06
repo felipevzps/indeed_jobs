@@ -7,6 +7,7 @@ I am doing this 4fun and to train my python skills. =D
 ### To do
 
 - [x] Get job informations
+- [x] Get job partial description
 - [ ] Get full job description
 - [x] Plot all companies
 - [ ] Plot required technology background
