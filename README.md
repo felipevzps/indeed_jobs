@@ -10,6 +10,7 @@ I am doing this 4fun and to train my python skills. =D
 - [x] Get job partial description
 - [ ] Get full job description
 - [x] Plot all companies
+- [x] Plot number of job openings 
 - [ ] Plot required technology background
 
 ### References
