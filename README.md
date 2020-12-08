@@ -9,8 +9,8 @@ I am doing this 4fun and to train my python skills. =D
 - [x] Get job informations
 - [x] Get job partial description
 - [ ] Get full job description
-- [x] Plot all companies
-- [x] Plot number of job openings 
+- [x] [Plot all companies and number of job openings](https://github.com/felipevzps/indeed_jobs/blob/main/plot/company_bioinfo12012020_05:15.csv.pdf)
+- [x] [Plot job location](https://github.com/felipevzps/indeed_jobs/blob/main/plot/location_bioinfo12012020_05:15.csv.pdf)
 - [ ] Plot required technology background
 
 ### References
