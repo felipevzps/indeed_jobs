@@ -12,12 +12,18 @@ today = time.strftime("%m%d%Y_%H:%M")
 # Having problems to get job_desc
 df = pd.DataFrame(columns=["Title","Location","Company","Salary","Rating", "Summary","Description"])
 
-for i in range(0,100,10):
+for i in range(0,200,10):
 	# Check the link, it must start with 0 and go from 10 to 10
 	# Every multiple of 10 is a page, e.g 0 = page 1, 10 = page 2 ...
-	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=3be104f34b880df7'.format(i))
-	driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
-
+	#Sustainability manager - United States
+	driver.get('https://www.indeed.com/jobs?q=sustainability+manager&l=United+States&start={}'.format(i))
+	
+	#Bioinformatics - Remote
+	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
+	
+	#Bioinformatics - United States
+	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=United+States&start={}'.format(i))
+	
 	jobs = []
 	driver.implicitly_wait(4)
 	# The each result appears in the class "<div class="jobsearch-SerpJobCard unifiedRow row result clickcard..."
@@ -51,15 +57,13 @@ for i in range(0,100,10):
 		
 		#sum_div = job.find_element_by_xpath('./div[3]')
 		sum_div = job.find_elements_by_class_name("summary")[0]
+
 		try:
 			sum_div.click()
 		except:
 			close_button = driver.find_elements_by_class_name('popover-x-button-close')[0]
 			close_button.click()
 			sum_div.click()	
-		
-		####
-		# Im having problems to get job_desc :(
 		
 		try:
 			job_desc = soup.find(class_="jobsearch-JobComponent-embeddedBody").text.replace("\n","").strip()
@@ -83,4 +87,4 @@ for i in range(0,100,10):
 		print("Got these many results:",df.shape)
 
 
-df.to_csv("./data/bioinfo"+today+".csv",index=False)	
+df.to_csv("./data/bioinformatician" + "_US" + ".csv",index=False)	

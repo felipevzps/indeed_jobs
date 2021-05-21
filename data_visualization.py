@@ -1,28 +1,29 @@
-import os
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
+import os
+import obo
 
-relative_data_path = "./data/bioinfo12012020_05:15.csv"
+#Input data
+relative_data_path = "data/sustainability_US.csv"
 fname = os.path.basename(relative_data_path)
 
 df1 = pd.read_csv(relative_data_path, encoding="utf-8")
-
 df = df1.drop_duplicates()
-print(df.shape)
 
-#Task 1: Find companies with highest number of job listings
-fig1 = plt.gcf()
-counts = df.groupby("Company").count()["Title"].sort_values(ascending=False)#[:20]
-plt.show(counts.plot(kind="bar", figsize=(30,15)))
-fig1.tight_layout()
-fig1.savefig("./plot/company_"+fname+".pdf")
+#fig1 = plt.gcf()
+companies = obo.getJobsByCompanies(df) 
+#plt.savefig("./plot/JobsByCompanies_"+fname+".pdf")
+plt.show(companies.plot(kind="bar", figsize=(30,15)))
 
-#Task 2: Find Locations with highest number of job listings
-fig2 = plt.gcf()
-loc_counts = df.groupby("Location").count()["Title"].sort_values(ascending=False)[:30]
-plt.show(loc_counts.plot(kind="bar", figsize=(30,15)))
-fig2.tight_layout()
-fig2.savefig("./plot/location_"+fname+".pdf")
+#fig2 = plt.gcf()
+locations = obo.getJobLocation(df)
+#plt.savefig("./plot/JobLocation_"+fname+".pdf")
+plt.show(locations.plot(kind="bar", figsize=(30,15)))
 
+wordlist = obo.getJobKeywords(df)
+wordlist = obo.removeStopWords(wordlist, obo.stopwords)
 
-
+#fig3 = plt.gcf()
+extracted_df = obo.calculateKeywordFrequency(wordlist,9)
+#plt.savefig("./plot/KeywordFrequencie_"+fname+".pdf")
+plt.show(extracted_df.plot(x ='wordlist', y='wordfreq', kind='bar', figsize=(30,15)))
