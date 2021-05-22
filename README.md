@@ -15,4 +15,4 @@ I am doing this 4fun and to train my python skills. =D
 
 - [JobCompanies_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobCompanies_BioinformaticsUS.png)
 - [JobLocation_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobLocation_BioinformaticsUS.png)
-- [KeywordFrequency_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/KeywordFrequency_BioinformaticsUS)
+- [KeywordFrequency_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/KeywordFrequency_BioinformaticsUS.png)
