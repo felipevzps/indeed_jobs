@@ -12,11 +12,11 @@ today = time.strftime("%m%d%Y_%H:%M")
 # Having problems to get job_desc
 df = pd.DataFrame(columns=["Title","Location","Company","Salary","Rating", "Summary","Description"])
 
-for i in range(0,200,10):
+for i in range(0,20,10):
 	# Check the link, it must start with 0 and go from 10 to 10
 	# Every multiple of 10 is a page, e.g 0 = page 1, 10 = page 2 ...
 	#Sustainability manager - United States
-	driver.get('https://www.indeed.com/jobs?q=sustainability+manager&l=United+States&start={}'.format(i))
+	#driver.get('https://www.indeed.com/jobs?q=sustainability+manager&l=United+States&start={}'.format(i))
 	
 	#Bioinformatics - Remote
 	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
@@ -24,8 +24,11 @@ for i in range(0,200,10):
 	#Bioinformatics - United States
 	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=United+States&start={}'.format(i))
 	
+	#Bioinformatics - United States - $70k+ - Biology - Entry Level
+	driver.get('https://www.indeed.com/jobs?q=Bioinformatics+%2470%2C000&l=United+States&explvl=entry_level&taxo1=HH9s9Yq9Tw28vEHiAAur0A&start={}'.format(i))
+	
 	jobs = []
-	driver.implicitly_wait(4)
+	driver.implicitly_wait(10)
 	# The each result appears in the class "<div class="jobsearch-SerpJobCard unifiedRow row result clickcard..."
 	# Im getting the attributes from the class wich have "result" in it
 	for job in driver.find_elements_by_class_name('result'):# and driver.find_elements_by_id('vjs-container'):
@@ -56,7 +59,7 @@ for i in range(0,200,10):
 			salary = 'None'			
 		
 		#sum_div = job.find_element_by_xpath('./div[3]')
-		sum_div = job.find_elements_by_class_name("summary")[0]
+		sum_div = job.find_elements_by_class_name("title")[0]
 
 		try:
 			sum_div.click()
@@ -87,4 +90,4 @@ for i in range(0,200,10):
 		print("Got these many results:",df.shape)
 
 
-df.to_csv("./data/bioinformatician" + "_US" + ".csv",index=False)	
+df.to_csv("./data/Bioinformatics" + "_US" + ".csv",index=False)	
