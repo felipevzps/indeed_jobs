@@ -18,16 +18,7 @@ for i in range(0,110,10):
 	# Every multiple of 10 is a page, e.g 0 = page 1, 10 = page 2 ...
 	
 	#Bioinformatics - Remote
-	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
-	
-	#Bioinformatics - United States
-	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=United+States&start={}'.format(i))
-	
-	#Bioinformatics - United States - $70k+ - Biology - Entry Level
-	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics+%2470%2C000&l=United+States&explvl=entry_level&taxo1=HH9s9Yq9Tw28vEHiAAur0A&start={}'.format(i))
-	
-	#EstagioDesigner dudu
-	driver.get('https://br.indeed.com/jobs?q=est%C3%A1gio+designer&l=S%C3%A3o+Paulo%2C+SP&start={}'.format(i))
+	driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
 	
 	jobs = []
 	driver.implicitly_wait(3000)
