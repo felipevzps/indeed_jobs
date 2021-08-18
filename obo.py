@@ -97,4 +97,17 @@ stopwords += ['wherever', 'whether', 'which', 'while', 'whither', 'who']
 stopwords += ['whoever', 'whole', 'whom', 'whose', 'why', 'will', 'with']
 stopwords += ['within', 'without', 'would', 'yet', 'you', 'your']
 stopwords += ['yours', 'yourself', 'yourselves']
-stopwords += ['and…', 'data…', 'andor', 'current', 'using']
+stopwords += ['and…', 'data…', 'andor', 'current', 'using', 'provide']
+
+#portuguese
+stopwords += ['para', 'em', 'ou', 'e', 'dos', 'por', 'os', 'da', 'o', 'a', 'das', 'às', 'aos']
+stopwords += ['como', 'uma', 'um', 'na', 'que', 'estar', 'ao', 'entre', 'nos', 'nas']
+stopwords += ['está', 'ser', 'é', 'há', 'mais', 'com', 'fazer', 'área', 'dia', 'você']
+stopwords += ['nossa', 'nosso', 'seu', 'sua', 'isso', 'vida', 'nossos', 'nossas', 'suas']
+stopwords += ['valores', 'chegar', 'chega', 'chegou', 'somos', 'ti', 'ter', 'trabalhar']
+stopwords += ['marca', 'pelo', 'atuar', 'pela', 'hoje', 'mercado', 'empresa', 'time', 'décadas']
+stopwords += ['parte', 'trabalho', 'r', 'longo', 'prazo', 'tempo', 'à', 'meio', 'vaga', 'necessárias…']
+
+
+
+

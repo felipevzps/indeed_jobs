@@ -4,7 +4,7 @@ import os
 import obo
 
 #Input data
-relative_data_path = "data/sustainability_US.csv"
+relative_data_path = "data/EstagioDesigner_SP.csv"
 fname = os.path.basename(relative_data_path)
 
 df1 = pd.read_csv(relative_data_path, encoding="utf-8")
@@ -24,6 +24,6 @@ wordlist = obo.getJobKeywords(df)
 wordlist = obo.removeStopWords(wordlist, obo.stopwords)
 
 #fig3 = plt.gcf()
-extracted_df = obo.calculateKeywordFrequency(wordlist,9)
+extracted_df = obo.calculateKeywordFrequency(wordlist,4)
 #plt.savefig("./plot/KeywordFrequencie_"+fname+".pdf")
 plt.show(extracted_df.plot(x ='wordlist', y='wordfreq', kind='bar', figsize=(30,15)))
