@@ -4,7 +4,7 @@ import os
 import obo
 
 #Input data
-relative_data_path = "data/EstagioDesigner_SP.csv"
+relative_data_path = "data/Bioinformatics_Remote_2023.csv"
 fname = os.path.basename(relative_data_path)
 
 df1 = pd.read_csv(relative_data_path, encoding="utf-8")
