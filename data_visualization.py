@@ -12,12 +12,12 @@ df = df1.drop_duplicates()
 
 #fig1 = plt.gcf()
 companies = obo.getJobsByCompanies(df) 
-#plt.savefig("./plot/JobsByCompanies_"+fname+".pdf")
+#plt.savefig("./plot/JobsByCompanies_"+fname+".png")
 plt.show(companies.plot(kind="bar", figsize=(30,15)))
 
 #fig2 = plt.gcf()
 locations = obo.getJobLocation(df)
-#plt.savefig("./plot/JobLocation_"+fname+".pdf")
+#plt.savefig("./plot/JobLocation_"+fname+".png")
 plt.show(locations.plot(kind="bar", figsize=(30,15)))
 
 wordlist = obo.getJobKeywords(df)
@@ -25,5 +25,5 @@ wordlist = obo.removeStopWords(wordlist, obo.stopwords)
 
 #fig3 = plt.gcf()
 extracted_df = obo.calculateKeywordFrequency(wordlist,4)
-#plt.savefig("./plot/KeywordFrequencie_"+fname+".pdf")
+#plt.savefig("./plot/KeywordFrequencie_"+fname+".png")
 plt.show(extracted_df.plot(x ='wordlist', y='wordfreq', kind='bar', figsize=(30,15)))
