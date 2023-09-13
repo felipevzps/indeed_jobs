@@ -8,80 +8,82 @@ driver = webdriver.Chrome("./chromedriver")
 
 # Getting today and time to save new files names 
 today = time.strftime("%m%d%Y_%H:%M")
-output = "EstagioDesigner_SP"
+output = "Bioinformatics_Remote_2023"
 
-# Having problems to get job_desc
-df = pd.DataFrame(columns=["Title","Location","Company","Salary","Rating", "Summary","Description"])
+# Columns
+df = pd.DataFrame(columns=["Title", "Location", "Company", "Salary", "Summary"])
 
-for i in range(0,110,10):
-	# Check the link, it must start with 0 and go from 10 to 10
-	# Every multiple of 10 is a page, e.g 0 = page 1, 10 = page 2 ...
+for i in range(0,90,10):
+    
+	'''
+ 	Check the link before running, $i must start with 0 and increases by 10
+	Every multiple of 10 is a page, (e.g 0 = page 1, 10 = page 2 ...)
+ 	'''
 	
-	#Bioinformatics - Remote
+ 	#Bioinformatics - Remote
 	driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
-	
+ 
 	jobs = []
-	driver.implicitly_wait(3000)
-	# The each result appears in the class "<div class="jobsearch-SerpJobCard unifiedRow row result clickcard..."
-	for job in driver.find_elements_by_class_name('result'):
+ 
+	driver.implicitly_wait(100)
+	
+ 	# Each result appears in the class "<div class="job_seen_beacon"
+	for job in driver.find_elements_by_class_name('job_seen_beacon'):
 		soup = BeautifulSoup(job.get_attribute('innerHTML'),'html.parser')
 		
+		#title done
 		try:
-			title = soup.find(class_="title").text.replace("\n","").strip()
+			title = soup.find(class_="jobTitle").text.replace("\n","").strip()
 		except:
 			title = 'None'
 
+		#location done
 		try:
-			company = soup.find(class_="company").text.replace("\n","").strip()
+			location = soup.find(class_="companyLocation").text
+		except:
+			location = 'None'
+   
+		#company done
+		try:
+			company = soup.find(class_="companyName").text.replace("\n","").strip()
 		except:
 			company = 'None'
 
+		#salary done
 		try:
-			rating = soup.find(class_="ratingsContent").text.replace("\n","").strip()
+			salary = soup.find(class_="metadata salary-snippet-container").text.replace("\n","").strip()
 		except:
-			rating = 'None'
+			salary = 'None'		
 
+		#summary 
 		try:
-			location = soup.find(class_="location").text
-		except:
-			location = 'None'
-
-		try:
-			salary = soup.find(class_="salary").text.replace("\n","").strip()
-		except:
-			salary = 'None'			
-		
-		sum_div = job.find_elements_by_class_name("title")[0]
-
-		try:
-			sum_div.click()
-		except:
-		
-			cookie_button = driver.find_element_by_xpath("//button[@id='onetrust-accept-btn-handler']")
-			cookie_button.click()
-			sum_div.click()
-		
-		try:
-			sum_div.click()
-		except:
-			close_button = driver.find_elements_by_class_name('popover-x-button-close')[0]
-			close_button.click()
-			sum_div.click()	
-
-		try:
-			job_desc = soup.find(class_="jobsearch-JobComponent-embeddedBody").text.replace("\n","").strip()
-		except:
-			job_desc = 'None'	
-
-		try:
-			summary = soup.find(class_="summary").text.replace("\n","").strip()
+			summary = soup.find(class_="job-snippet").find("li").text.replace("\n","").strip()
 		except:
 			summary = 'None'
-	
-		df = df.append({'Title':title,'Location':location,"Company":company,"Salary":salary,
-						"Rating":rating, "Summary":summary, "Description": job_desc
-                        },ignore_index=True)
 
-		print("Got these many results:",df.shape)
+  		#### cookie button ####
+  
+		#sum_div = job.find_elements_by_class_name("title")[0]
 
-df.to_csv("./data/" + output + ".csv",index=False)	
+		#try:
+			#cookie_button.click()
+		#except:
+			#cookie_button = driver.find_element_by_xpath("//button[@id='onetrust-accept-btn-handler']")
+			#cookie_button.click()
+			#sum_div.click()
+		
+		#try:
+			#close_button.click()
+			#sum_div.click()
+		#except:
+			#close_button = driver.find_elements_by_class_name('popover-x-button-close')[0]
+			#close_button.click()
+			#sum_div.click()	
+   
+		#### cookie button ####
+		
+		df = df.append({"Title":title, "Location":location, "Company":company, "Salary":salary, "Summary": summary}, ignore_index=True)
+
+		print("Got these many results:", df.shape)
+
+df.to_csv("./data/" + output + ".csv", index=False)
