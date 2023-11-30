@@ -8,7 +8,7 @@ driver = webdriver.Chrome("./chromedriver")
 
 # Getting today and time to save new files names 
 today = time.strftime("%m%d%Y_%H:%M")
-output = "Bioinformatics_Remote_2023"
+output = "Bioinformatics_Remote_112023"
 
 # Columns
 df = pd.DataFrame(columns=["Title", "Location", "Company", "Salary", "Summary"])
@@ -21,10 +21,13 @@ for i in range(0,90,10):
  	'''
 	
  	#Bioinformatics - Remote
-	driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
- 
+ 	#driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&vjk=d2b226b7af08c0da'.format(i))
+    
+    # Bioinformatics, remote november
+	driver.get('https://www.indeed.com/jobs?q=Bioinformatics&l=remote&start={}&pp=gQAPAAAAAAAAAAAAAAACGIfb6gASAQEBCC00UWI2Nj68A0UMyPfCAAA&vjk=adbce905d0ea898e'.format(i))
+     
 	jobs = []
- 
+    
 	driver.implicitly_wait(100)
 	
  	# Each result appears in the class "<div class="job_seen_beacon"
