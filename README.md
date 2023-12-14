@@ -34,6 +34,15 @@ Just replace the page number with {} (`start={}`).
 ./get_jobs.py --url 'https://www.indeed.com/jobs?q=bioinformatics&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B&start={}&vjk=f4a3f4c434b0c649' --end 20 --out Bioinformatics_Remote_2pages
 ```
 
+> **Note:** Make sure to download the appropriate ChromeDriver version that matches your Google Chrome installation. For the correct version, visit the [ChromeDriver downloads page](https://chromedriver.chromium.org/downloads).
+> ```bash
+> google-chrome --version
+> Google Chrome 119.0.6045.199
+> 
+> ./chromedriver --version
+> ChromeDriver 119.0.6045.105 
+> ```
+
 ### Data Visualization
 ```
 usage: data_visualization.py [-h] --i data/OUTPUT_NAME
