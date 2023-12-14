@@ -1,32 +1,37 @@
+#!/usr/bin/env python
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import obo
+import argparse
+
+parser = argparse.ArgumentParser(description="A script to generate histograms from Indeed job listings.")
+parser.add_argument("--i", dest = 'input', type=str, metavar="data/OUTPUT_NAME", required=True, help="Output name <saved on data/>")
+
+args = parser.parse_args()
+relative_data_path = args.input
 
 #Input data
-relative_data_path = "data/Bioinformatics_Remote_2023.csv"
 fname = os.path.basename(relative_data_path)
 
 df1 = pd.read_csv(relative_data_path, encoding="utf-8")
 df = df1.drop_duplicates()
 
-#fig1 = plt.gcf()
 companies = obo.getJobsByCompanies(df) 
-#plt.savefig("./plot/JobsByCompanies_"+fname+".png")
 companies.plot(kind="bar", figsize=(30,15))
-plt.show()
+plt.savefig("./plot/JobsByCompanies_"+fname+".png")
+#plt.show()
 
-#fig2 = plt.gcf()
 locations = obo.getJobLocation(df)
-#plt.savefig("./plot/JobLocation_"+fname+".png")
 locations.plot(kind="bar", figsize=(30,15))
-plt.show()
+plt.savefig("./plot/JobLocation_"+fname+".png")
+#plt.show()
 
 wordlist = obo.getJobKeywords(df)
 wordlist = obo.removeStopWords(wordlist, obo.stopwords)
 
-#fig3 = plt.gcf()
 extracted_df = obo.calculateKeywordFrequency(wordlist,4)
-#plt.savefig("./plot/KeywordFrequencie_"+fname+".png")
 extracted_df.plot(x ='wordlist', y='wordfreq', kind='bar', figsize=(30,15))
-plt.show()
+plt.savefig("./plot/KeywordFrequencie_"+fname+".png")
+#plt.show()
