@@ -8,10 +8,10 @@ from bs4 import BeautifulSoup
 import warnings
 import argparse
 
-parser = argparse.ArgumentParser(description="Web scraping job listings on Indeed.")
+parser = argparse.ArgumentParser(description="Automated web scraping using Selenium and BeautifulSoup to extract job listings from Indeed.")
 parser.add_argument("--url", dest = 'url', type=str, metavar="URL", required=True, help="URL pattern for web scraping with a {} placeholder")
-parser.add_argument("--end", dest='end', type=int, metavar="40", required=True, help="Last page for iteration")
-parser.add_argument("--out", dest='output', type=str, metavar="joblisting", required=True, help="Output name <saved on data/>")
+parser.add_argument("--end", dest='end', type=int, metavar="PAGES", required=True, help="Last page for iteration")
+parser.add_argument("--out", dest='output', type=str, metavar="OUTPUT_NAME", required=True, help="Output name <save on data/>")
 
 args = parser.parse_args()
 url = args.url
