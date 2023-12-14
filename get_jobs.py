@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-
-
 import pandas as pd 
 from bs4 import BeautifulSoup
 import time
@@ -15,7 +13,7 @@ driver = webdriver.Chrome(service=service, options=options)
 
 # Getting today and time to save new files names 
 today = time.strftime("%m%d%Y_%H:%M")
-output = "Bioinformatics_Remote_December"
+output = "test"
 
 # Columns
 df = pd.DataFrame(columns=["Title", "Location", "Company", "Salary", "Summary"])
@@ -42,27 +40,28 @@ for i in range(0,90,10):
 	for job in driver.find_elements(By.CLASS_NAME,'job_seen_beacon'):
 		soup = BeautifulSoup(job.get_attribute('innerHTML'),'html.parser')
 		
-		#title done
+		#title
 		try:
 			title = soup.find(class_="jobTitle").text.replace("\n","").strip()
 		except:
 			title = 'None'
 
-		#location done
+		#location
 		try:
-			location = soup.find(class_="companyLocation").text
+			location = soup.find(class_="css-t4u72d eu4oa1w0").span.text.strip()
 		except:
 			location = 'None'
    
-		#company done
+		#company
 		try:
-			company = soup.find(class_="companyName").text.replace("\n","").strip()
+			company = soup.find(class_="css-1x7z1ps eu4oa1w0").text.strip()
 		except:
 			company = 'None'
 
-		#salary done
+		#salary
 		try:
-			salary = soup.find(class_="metadata salary-snippet-container").text.replace("\n","").strip()
+			salary_element = soup.find("div", {"data-testid": "attribute_snippet_testid"})
+			salary = salary_element.text.strip()
 		except:
 			salary = 'None'		
 
