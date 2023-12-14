@@ -1,18 +1,38 @@
-### indeed_jobs
+Automated web scraping using Selenium and BeautifulSoup to extract job listings from Indeed. 
 
-This repository hosts scripts to analyze jobs requirements and technologies.
+### Features
+- Iterates through specified job URL and saves results in a CSV file.
+- Generates histograms depicting company, location, and keyword frequencies from job summaries.
 
-I am doing this 4fun and to train my python skills. =D 
+### Usage
 
-### To do
+```
+usage: get_jobs.py [-h] --url URL --end PAGES --out OUTPUT_NAME
 
-- [x] Get job informations - (Title, Location, Company, Salary, Rating, Summary, Description)
-- [x] Get job partial description
-- [ ] Get full job description
-- [ ] Polish the final plots (add title, legend, etc.)
+Automated web scraping using Selenium and BeautifulSoup to extract job listings from Indeed.
 
-### Results 
+options:
+  -h, --help         show this help message and exit
+  --url URL          URL pattern for web scraping with a {} placeholder
+  --end PAGES        Last page for iteration
+  --out OUTPUT_NAME  Output name <save on data/>
+```
 
-- [JobCompanies_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobCompanies_BioinformaticsUS.png)
-- [JobLocation_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobLocation_BioinformaticsUS.png)
-- [KeywordFrequency_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/KeywordFrequency_BioinformaticsUS.png)
+### Examples 
+
+Just replace the page number with {} (`start={}`). 
+
+```
+./get_jobs.py --url 'https://www.indeed.com/jobs?q=bioinformatics&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B&start={}&vjk=f4a3f4c434b0c649' --end 20 --out Bioinformatics_Remote_2pages
+```
+
+#### Companies
+
+![JobCompanies_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobCompanies_BioinformaticsUS.png)
+
+#### Locations
+
+![JobLocation_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/JobLocation_BioinformaticsUS.png)
+
+#### Keyword Frequency
+![KeywordFrequency_BioinformaticsUS](https://github.com/felipevzps/indeed_jobs/blob/main/plot/KeywordFrequency_BioinformaticsUS.png)
