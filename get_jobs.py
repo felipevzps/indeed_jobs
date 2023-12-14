@@ -13,7 +13,7 @@ driver = webdriver.Chrome(service=service, options=options)
 
 # Getting today and time to save new files names 
 today = time.strftime("%m%d%Y_%H:%M")
-output = "test"
+output = "Bioinformatics_Remote_December"
 
 # Columns
 df = pd.DataFrame(columns=["Title", "Location", "Company", "Salary", "Summary"])
