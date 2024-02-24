@@ -54,13 +54,13 @@ for i in range(0,end,10):
 
 		#location
 		try:
-			location = soup.find(class_="css-t4u72d eu4oa1w0").span.text.strip()
+			location = soup.find(class_="css-1p0sjhy eu4oa1w0").span.text.strip()
 		except:
 			location = 'None'
    
 		#company
 		try:
-			company = soup.find(class_="css-1x7z1ps eu4oa1w0").text.strip()
+			company = soup.find(class_="css-92r8pb eu4oa1w0").text.strip()
 		except:
 			company = 'None'
 
@@ -73,7 +73,8 @@ for i in range(0,end,10):
 
 		#summary 
 		try:
-			summary = soup.find(class_="job-snippet").find("li").text.replace("\n","").strip()
+			#summary = soup.find(class_="job-snippet").find("li").text.replace("\n","").strip()
+			summary = soup.find(class_="css-9446fg eu4oa1w0").find("li").text.replace("\n","").strip()
 		except:
 			summary = 'None'
 
